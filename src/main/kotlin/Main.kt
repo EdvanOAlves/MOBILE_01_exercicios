@@ -1,7 +1,7 @@
-
 fun main() {
+
     //Criando variáveis
-    val arrayNumeros = arrayOf(3, 4, 6,1,2 ,2,4)
+    val arrayNumeros = arrayOf(3, 4, 6, 1, 2 , 2, 4)
 
 //1 -) Crie uma variável numérica e diga se o número é par ou (resto da divisão por  2 = 0) ímpar (resto da divisão por 2 = 1)
     println("=======================")
@@ -73,29 +73,37 @@ fun main() {
     println(convertToFahrenheit(65.6F))
 }
 
+//======================================================================
+//                          FUNÇÕES
+//======================================================================
+
+//1 -) Crie uma variável numérica e diga se o número é par ou (resto da divisão por  2 = 0) ímpar (resto da divisão por 2 = 1)
 fun isEven(numero: Int): Boolean {
-    if (numero % 2 == 0)
-        return true
-    else
-        return false
+    return numero % 2 == 0
 }
 
+
+//2 -) Crie uma variável numérica e exiba se o número é positivo, negativo ou zero
 fun classifyNumber(numero: Int):String{
     var numeroStatus = when{
         numero < 0 -> "negativo"
         numero > 0 -> "positivo"
-        numero == 0 -> "0"
+        numero == 0 -> "zero"
         else -> "input Inválido"
     }
     println("O número $numero é $numeroStatus")
     return numeroStatus
 }
+
+
+//3 -) Crie uma variável idade e diga "Criança" caso seja menor de 12,
+//"Adolescente" entre 12 e 17, "Adulto" entre 18 e 59 e "Idoso" se 60 ou mais
 fun classifyAge(idade: Int):String{
     val statusIdade: String = when(idade) {
         in 0..12 -> "Criança"
         in 13..17 -> "Adolescente"
         in 18..59 -> "Adulto"
-        in 60..230 -> "Idoso"
+        else if (idade>=60) -> "Idoso" //Essa linha em específico usa When Guard, que não existe em versões anteriores do kotlin
         else -> "Valor inválido"
     }
     return statusIdade
@@ -110,19 +118,22 @@ fun calcTable(numero: Int){
 }
 //5 -) Dado um array de números, calcule a soma de todos eles (ex: [1,2,3,4] → 10)
 fun sumArray(numeros:Array<Int>): Int {
+    //Solução com função única
+    //val total = numeros.sum()
+
+    //Solução mais manual
     var total:Int = 0
-    for (numero in numeros){
+    for (numero in numeros)
         total += numero
-    }
     return total
 }
 
 //6 -) Encontre o maior número dentro de um array (ex: [5,8,2,10,3] → 10)
 fun findMax(numeros:Array<Int>):Int{
-    //jeito COVARDE
-//    print(numeros.max())
+    //Simplificado, função única
+    //print(numeros.max())
 
-    //Assim que se faz
+    //Manual
     var maiorValor:Int = numeros[0]
     var indiceMaiorValor:Int = 0
     for ((indice ,numero) in numeros.withIndex()){
